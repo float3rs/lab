@@ -14,16 +14,16 @@ disp('/-/-/-/-/-/-/-/-/-/-/-/-/-')
 disp('-> SYSTEM PARAMETER VALUES')
 disp('/-/-/-/-/-/-/-/-/-/-/-/-/-')
 
-R1=22; 
-R2=12; 
-R3=2;
+R1=22000; 
+R2=12000; 
+R3=2000;
 
-C1=100; 
-C2=55; 
-C3=10;
+C1=0.000100; 
+C2=0.000050; 
+C3=0.000010;
 
-L2=100; 
-L3=10;
+L2=0.1; 
+L3=0.01;
 
 disp(' ')
 disp('RESISTANCES: ')
@@ -1001,9 +1001,9 @@ disp('| <><><>< QUESTION: N ><><><> |')
 disp('|-----------------------------|')
 disp(' ')
 
-fA_06=figure('Name','sysA_04_V_R1');
+fA_06=figure('Name','sysA_06_V_R1');
 step(sysA_06), grid, zoom
-disp('do FIGURE sysA_09_V_R1')
+disp('do FIGURE sysA_06_V_R1')
 
 disp(' ')
 stepinfo(sysA_03);
