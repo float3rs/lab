@@ -1,0 +1,40 @@
+>> clear
+close all
+
+syms s;             
+syms R;             
+syms L;            
+syms C;             
+
+A = [ 0     1/C;
+    -1/L  -R/L];
+
+B = [  0;
+     1/L];
+ 
+C = [ 0  R;
+     -1 -R;
+      1  0];
+
+D = [0;  1;  0];
+
+I = eye(2);
+
+G = C * inv(s * I - A) * B + D;
+>> G
+ 
+G =
+ 
+                                     (C*R*s)/(C*L*s^2 + C*R*s + 1)
+ 1 - (L/(C*L*s^2 + C*R*s + 1) + (C*L*R*s)/(C*L*s^2 + C*R*s + 1))/L
+                                           1/(C*L*s^2 + C*R*s + 1)
+ 
+>> simplify(G)
+ 
+ans =
+ 
+   (C*R*s)/(C*L*s^2 + C*R*s + 1)
+ (C*L*s^2)/(C*L*s^2 + C*R*s + 1)
+         1/(C*L*s^2 + C*R*s + 1)
+ 
+>> 

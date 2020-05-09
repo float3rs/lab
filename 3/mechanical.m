@@ -10,20 +10,10 @@ disp('>< ALL CLOSED')
 disp(' ')
 
 %% PARAMETERS
+
 disp('/-/-/-/-/-/-/-/-/-/-/-/-/-')
 disp('-> SYSTEM PARAMETER VALUES')
 disp('/-/-/-/-/-/-/-/-/-/-/-/-/-')
-
-% m1=10; 
-% m2=55; 
-% m3=100;
-% 
-% k1=5000; 
-% k2=10000; 
-% k3=15000;
-% 
-% c2=100; 
-% c3=200;
 
 m1=100; 
 m2=55; 
@@ -60,6 +50,7 @@ disp(['c3: ', num2str(c3)])
 disp(' ')
 
 %% MATRICES
+
 disp('/-/-/-/-/-/-/-/-/-/-/-/')
 disp('-> STATE SPACE MATRICES')
 disp('/-/-/-/-/-/-/-/-/-/-/-/')
@@ -126,35 +117,26 @@ disp('INPUT MATRIX:')
     0       0     0;
     0       0     0]
 
-% disp(' ')
-% disp('### PAUSE ###')
-% pause
-% disp(' ')
-
 %% TRANSFER FUNCTIONS 
+
 disp('/-/-/-/-/-/-/-/-/-/-/')
 disp('-> TRANSFER FUNCTIONS')
 disp('/-/-/-/-/-/-/-/-/-/-/')
 
-% /////////////////////////////////////
-% Transfer functions w.r.t first input.
-% /////////////////////////////////////
+% /////////////////////////////////
+% TRANSFER FUNCTIONS w.r.t INPUT: 1
+% /////////////////////////////////
 
 disp(' ')
 disp('TRANSFER FUNCTION << INPUT 1')
 
-[num1,den]=ss2tf(A,B,C,D,1)
+[num1,den] = ss2tf(A,B,C,D,1)
 
 disp(' ')
 disp('******************************************************')
 disp('* NUM: NUMERATOR COEFFICIENS (PER OUTPUT POLYNOMIAL) *')
 disp('* DEM: DENOMINATOR COEFFICIENTS (COMMON)             *')
 disp('******************************************************')
-
-% disp(' ')
-% disp('### PAUSE ###')
-% pause
-% disp(' ')
 
 disp(' ')
 disp(' ')
@@ -169,25 +151,20 @@ pause
 disp(' ')
 disp(' ')
 
-% //////////////////////////////////////
-% Transfer functions w.r.t second input.
-% //////////////////////////////////////
+% /////////////////////////////////
+% TRANSFER FUNCTIONS w.r.t INPUT: 2
+% /////////////////////////////////
 
 disp(' ')
 disp('TRANSFER FUNCTION << INPUT 2')
 
-[num2,den]=ss2tf(A,B,C,D,2)
+[num2,den] = ss2tf(A,B,C,D,2)
 
 disp(' ')
 disp('******************************************************')
 disp('* NUM: NUMERATOR COEFFICIENS (PER OUTPUT POLYNOMIAL) *')
 disp('* DEM: DENOMINATOR COEFFICIENTS (COMMON)             *')
 disp('******************************************************')
-
-% disp(' ')
-% disp('### PAUSE ###')
-% pause
-% disp(' ')
 
 disp(' ')
 disp(' ')
@@ -202,25 +179,20 @@ pause
 disp(' ')
 disp(' ')
 
-% /////////////////////////////////////
-% Transfer functions w.r.t third input.
-% /////////////////////////////////////
+% /////////////////////////////////
+% TRANSFER FUNCTIONS w.r.t INPUT: 3
+% /////////////////////////////////
 
 disp(' ')
 disp('TRANSFER FUNCTION << INPUT 3')
 
-[num3,den]=ss2tf(A,B,C,D,3)
+[num3,den] = ss2tf(A,B,C,D,3)
 
 disp(' ')
 disp('******************************************************')
 disp('* NUM: NUMERATOR COEFFICIENS (PER OUTPUT POLYNOMIAL) *')
 disp('* DEM: DENOMINATOR COEFFICIENTS (COMMON)             *')
 disp('******************************************************')
-
-% disp(' ')
-% disp('### PAUSE ###')
-% pause
-% disp(' ')
 
 disp(' ')
 disp(' ')
@@ -316,6 +288,8 @@ pause
 disp(' ')
 disp(' ')
 
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
 disp(' ')
 disp('>>> QUESTION:                       B') 
 disp('>>> INPUT:                         f1') 
@@ -325,7 +299,7 @@ disp('>>>              f_mean     =    0 Nt')
 disp(' ')
 disp(' ')
 disp('$ OUTPUT:   x1')
-sysB_01=tf(num1(01,:), den)
+sysB_01=tf(num1(1,:), den)
 disp(' ')
 disp(' ')
 disp('$ OUTPUT:   x2')
@@ -488,15 +462,12 @@ disp(' ')
 
 %% SYSTEM ANALYSIS
 
-% clc
-
 disp(' ')
 disp('/-/-/-/-/-/-/-/')
 disp('SYSTEM ANALYSIS')
 disp('/-/-/-/-/-/-/-/')
 disp(' ')
 close 
-
 
 disp('>>>>>>>>>>>>>>> POLES')
 disp('>>> EIGEN-FREQUENCIES')
@@ -525,11 +496,6 @@ disp('### PAUSE 2/2 ###')
 pause
 disp(' ')
 
-% disp(' ')
-% disp('### PAUSE ###')
-% pause
-% disp(' ')
-
 %% SYSTEM PARAMETERS BECAUSE OF INPUTS
 
 disp(' ')
@@ -540,7 +506,6 @@ disp('/-/-/-/-/-/-/-/-/-/-')
 disp(' ')
 close 
 
-% All system parameters due to first input.
 [z1,p,k1]=tf2zp(num1,den) 
 
 disp(' ')
@@ -557,7 +522,6 @@ disp('/-/-/-/-/-/-/-/-/-/-')
 disp(' ')
 close 
 
-% All system parameters due to second input.
 [z2,p,k2]=tf2zp(num2,den) 
 
 disp(' ')
@@ -574,12 +538,29 @@ disp('/-/-/-/-/-/-/-/-/-/-')
 disp(' ')
 close 
 
-% All system parameters due to third input.
 [z3,p,k3]=tf2zp(num3,den) 
 
 disp(' ')
 disp('> SYSTEM PARAMETERS DUE TO INPUT 3')
 disp('### PAUSE 3/3 ###')
+pause
+disp(' ')
+
+%% STEADY STATE GAIN
+
+disp(' ')
+disp('/-/-/-/-/-/-/-')
+disp('STEADY-STATE GAIN')
+disp('/-/-/-/-/-/-/-')
+disp(' ')
+
+kss_1 = num1(:,7)./den(7)
+kss_2 = num2(:,7)./den(7)
+kss_3 = num3(:,7)./den(7)
+
+disp(' ')
+disp('> STEADY-STATE GAIN')
+disp('### PAUSE ###')
 pause
 disp(' ')
 
@@ -611,8 +592,6 @@ disp('/-/-/-/-/-/-/-/-/-/-')
 disp(' ')
 close 
 
-% Bode plots all outputs due to all inputs.
-
 f_bode_1 = figure('Name','bode(A,B,C,D,1)');
 bode(A,B,C,D,1), grid 
 f_bode_2 = figure('Name','bode(A,B,C,D,2)');
@@ -636,46 +615,59 @@ close all
 optA = stepDataOptions('StepAmplitude',100)
 
 fA_01=figure('Name','sysA_01_x1');
-step(sysA_01, optA), grid, zoom
+step(sysA_01, optA, 'r'), title('RESPONSE (STEP x 100) f3:x1'), grid, zoom
 disp('do FIGURE sysA_01_x1')
+
 fA_02=figure('Name','sysA_02_x2');
-step(sysA_02, optA), grid, zoom
+step(sysA_02, optA, 'g'), title('RESPONSE (STEP x 100) f3:x2'), grid, zoom
 disp('do FIGURE sysA_02_x2')
+
 fA_03=figure('Name','sysA_03_x3');
-step(sysA_03, optA), grid, zoom
+step(sysA_03, optA, 'b'), title('RESPONSE (STEP x 100) f3:x3'), grid, zoom
 disp('do FIGURE sysA_03_x3')
+
 fA_04=figure('Name','sysA_04_u1');
-step(sysA_04, optA), grid, zoom
+step(sysA_04, optA, 'r'), title('RESPONSE (STEP x 100) f3:u1'), grid, zoom
 disp('do FIGURE sysA_04_u1')
+
 fA_05=figure('Name','sysA_05_u2');
-step(sysA_05, optA), grid, zoom
+step(sysA_05, optA, 'g'), title('RESPONSE (STEP x 100) f3:u2'), grid, zoom
 disp('do FIGURE sysA_05_u2')
+
 fA_06=figure('Name','sysA_06_u3');
-step(sysA_06, optA), grid, zoom
+step(sysA_06, optA, 'b'), title('RESPONSE (STEP x 100) f3:u3'), grid, zoom
 disp('do FIGURE sysA_06_u3')
+
 fA_07=figure('Name','sysA_07_a1');
-step(sysA_07, optA), grid, zoom
+step(sysA_07, optA, 'r'), title('RESPONSE (STEP x 100) f3:a1'), grid, zoom
 disp('do FIGURE sysA_07_a1')
+
 fA_08=figure('Name','sysA_08_a2');
-step(sysA_08, optA), grid, zoom
+step(sysA_08, optA, 'g'), title('RESPONSE (STEP x 100) f3:a2'), grid, zoom
 disp('do FIGURE sysA_08_a2')
+
 fA_09=figure('Name','sysA_09_a3');
-step(sysA_09, optA), grid, zoom
+step(sysA_09, optA, 'b'), title('RESPONSE (STEP x 100) f3:a3'), grid, zoom
 disp('do FIGURE sysA_09_a3')
+
 fA_10=figure('Name','sysA_10_fk1');
-step(sysA_10, optA), grid, zoom
+step(sysA_10, optA, 'r'), title('RESPONSE (STEP x 100) f3:fk1'), grid, zoom
 disp('do FIGURE sysA_10_fk1')
+
 fA_11=figure('Name','sysA_11_fk2');
-step(sysA_11, optA), grid, zoom
+step(sysA_11, optA, 'g'), title('RESPONSE (STEP x 100) f3:fk2'), grid, zoom
 disp('do FIGURE sysA_11_fk2')
+
 fA_12=figure('Name','sysA_12_fc2');
-step(sysA_12, optA), grid, zoom
+step(sysA_12, optA, 'g'), title('RESPONSE (STEP x 100) f3:fc2'), grid, zoom
 disp('do FIGURE sysA_12_fc2')
+
 fA_13=figure('Name','sysA_13_fk3');
-step(sysA_13, optA), grid, zoom
+step(sysA_13, optA, 'b'), title('RESPONSE (STEP x 100) f3:fk3'), grid, zoom
 disp('do FIGURE sysA_13_fk3')
+
 fA_14=figure('Name','sysA_14_fc3');
-step(sysA_14, optA), grid, zoom
+step(sysA_14, optA, 'b'), title('RESPONSE (STEP x 100) f3:fc3'), grid, zoom
 disp('do FIGURE sysA_14_fc3')
 
 disp(' ')
@@ -690,7 +682,6 @@ disp('| ANALYSIS: B |')
 disp('|-------------|')
 close all
 
-
 % ///////////////////////
 % fp     - p = 1000    Nt
 % f_mean     =    0    Nt
@@ -700,50 +691,93 @@ close all
 % sampling:     100 spl/s
 % ///////////////////////
 
-[u,t] = gensig('sin', 1, 60, 0.01);
+[u,t] = gensig('sin', 1, 60, 0.001);
+u = 500 * u;
+
 disp(' ')
 
-fB_01=figure('Name','sysB_01_x1');
-lsim(sysB_01, 500*u, t);
+fB_01 = figure('Name','sysB_01_x1');
+lB_01 = lsim(sysB_01, u, t);
+plot(t, lB_01, 'r'); xlabel('t'); ylabel('x1');
+title('RESPONSE (SINE) f1:x1'); grid; zoom;
 disp('do FIGURE sysB_01_x1')
-fB_01=figure('Name','sysB_02_x2');
-lsim(sysB_02, 500*u, t);
+
+fB_02 = figure('Name','sysB_02_x2');
+lB_02 = lsim(sysB_02, u, t);
+plot(t, lB_02, 'g'); xlabel('t'); ylabel('x2');
+title('RESPONSE (SINE) f1:x2'); grid; zoom;
 disp('do FIGURE sysB_02_x2')
-fB_01=figure('Name','sysB_03_x3');
-lsim(sysB_03, 500*u, t);
+
+fB_03 = figure('Name','sysB_03_x3');
+lB_03 = lsim(sysB_03, u, t);
+plot(t, lB_02, 'b'); xlabel('t'); ylabel('x3');
+title('RESPONSE (SINE) f1:x3'); grid; zoom;
 disp('do FIGURE sysB_03_x3')
-fB_01=figure('Name','sysB_04_u1');
-lsim(sysB_04, 500*u, t);
+
+fB_04 = figure('Name','sysB_04_u1');
+lB_04 = lsim(sysB_04, u, t);
+plot(t, lB_04, 'r'); xlabel('t'); ylabel('u1');
+title('RESPONSE (SINE) f1:u1'); grid; zoom;
 disp('do FIGURE sysB_04_u1')
-fB_01=figure('Name','sysB_05_u2');
-lsim(sysB_05, 500*u, t);
+
+fB_05 = figure('Name','sysB_05_u2');
+lB_05 = lsim(sysB_05, u, t);
+plot(t, lB_05, 'g'); xlabel('t'); ylabel('u2');
+title('RESPONSE (SINE) f1:u2'); grid; zoom;
 disp('do FIGURE sysB_05_u2')
-fB_01=figure('Name','sysB_06_u3');
-lsim(sysB_06, 500*u, t);
+
+fB_06 = figure('Name','sysB_06_u3');
+lB_06 = lsim(sysB_06, u, t);
+plot(t, lB_01, 'b'); xlabel('t'); ylabel('u3');
+title('RESPONSE (SINE) f1:u3'); grid; zoom;
 disp('do FIGURE sysB_06_u3')
-fB_01=figure('Name','sysB_07_a1');
-lsim(sysB_07, 500*u, t);
+
+fB_07 = figure('Name','sysB_07_a1');
+lB_07 = lsim(sysB_07, u, t);
+plot(t, lB_07, 'r'); xlabel('t'); ylabel('a1');
+title('RESPONSE (SINE) f1:a1'); grid; zoom;
 disp('do FIGURE sysB_07_a1')
-fB_01=figure('Name','sysB_08_a2');
-lsim(sysB_08, 500*u, t);
+
+fB_08 = figure('Name','sysB_08_a2');
+lB_08 = lsim(sysB_08, u, t);
+plot(t, lB_08, 'r'); xlabel('t'); ylabel('a2');
+title('RESPONSE (SINE) f1:a2'); grid; zoom;
 disp('do FIGURE sysB_08_a2')
-fB_01=figure('Name','sysB_09_a3');
-lsim(sysB_09, 500*u, t);
+
+fB_09 = figure('Name','sysB_09_a3');
+lB_09 = lsim(sysB_09, u, t);
+plot(t, lB_09, 'r'); xlabel('t'); ylabel('a3');
+title('RESPONSE (SINE) f1:a3'); grid; zoom;
 disp('do FIGURE sysB_09_a3')
-fB_01=figure('Name','sysB_10_fk1');
-lsim(sysB_10, 500*u, t);
+
+fB_10 = figure('Name','sysB_10_fk1');
+lB_10 = lsim(sysB_10, u, t);
+plot(t, lB_10, 'r'); xlabel('t'); ylabel('fk1');
+title('RESPONSE (SINE) f1:fk1'); grid; zoom;
 disp('do FIGURE sysB_10_fk1')
-fB_01=figure('Name','sysB_11_fk2');
-lsim(sysB_11, 500*u, t);
+
+fB_11 = figure('Name','sysB_11_fk2');
+lB_11 = lsim(sysB_11, u, t);
+plot(t, lB_11, 'g'); xlabel('t'); ylabel('fk2');
+title('RESPONSE (SINE) f1:fk2'); grid; zoom;
 disp('do FIGURE sysB_11_fk2')
-fB_01=figure('Name','sysB_12_fc2');
-lsim(sysB_12, 500*u, t);
+
+fB_12=figure('Name','sysB_12_fc2');
+lB_12 = lsim(sysB_12, u, t);
+plot(t, lB_12, 'g'); xlabel('t'); ylabel('fc2');
+title('RESPONSE (SINE) f1:fc2'); grid; zoom;
 disp('do FIGURE sysB_12_fc2')
-fB_01=figure('Name','sysB_13_fk3');
-lsim(sysB_13, 500*u, t);
+
+fB_13=figure('Name','sysB_13_fk3');
+lB_13 = lsim(sysB_13, u, t);
+plot(t, lB_13, 'b'); xlabel('t'); ylabel('fk3');
+title('RESPONSE (SINE) f1:fk3'); grid; zoom;
 disp('do FIGURE sysB_13_fk3')
-fB_01=figure('Name','sysB_14_fc3');
-lsim(sysB_14, 500*u, t);
+
+fB_14=figure('Name','sysB_14_fc3');
+lB_14 = lsim(sysB_14, u, t);
+plot(t, lB_14, 'b'); xlabel('t'); ylabel('fc3');
+title('RESPONSE (SINE) f1:fc3'); grid; zoom;
 disp('do FIGURE sysB_14_fc3')
 
 disp(' ')
@@ -782,9 +816,13 @@ disp('|-----------------------------|')
 disp(' ')
 
 fA_06=figure('Name','sysA_04_u1');
-step(100*sysA_04,1), grid, zoom
+step(100*sysA_04,20), grid, zoom
 disp('do FIGURE sysA_04_u1')
 
 disp(' ')
-stepinfo(100*sysA_04);
+stepinfo(100*sysA_04)
+
+disp(' ')
+dcgain(100*sysA_04)/2 
+
 
