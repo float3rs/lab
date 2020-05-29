@@ -1037,12 +1037,19 @@ con_PID = parallel(parallel(tf(KP, 1), tf(KI, [1 0])), tf([KD 0], 1))
 % Compare all step responses (open and closed loop).
 figure 
 
-time_vec = linspace(0,4,40000);
-y = step(sys, time_vec);
+% time_vec = linspace(0, 4,  40000 );
+time_vec = linspace(0, 20,  200000 );
+% time_vec = linspace(0, 12, 120000);
+% time_vec = linspace(4, 8,  40000 );
+
+y    = step(sys, time_vec);
+
 plot(time_vec , y, 'k-', 'linewidth', 1) 
 grid 
 zoom
 hold
+
+%/-/-/-/-/-//-/-/-/-/-/-/-/-/-/-//-/-/-/-/-/-/-/-/-/--/-//-/-/--/-/-/-/-/-/
 
 % Step (60 rad/sec) REFERENCE response of the P-based closed loop.
 con_P_CL = feedback(series(con_P, sys), 1)

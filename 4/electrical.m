@@ -1247,8 +1247,8 @@ hold
 
 % Step response of the P-based closed loop.
 con_P_CL = feedback(series(con_P,sys),1) 
-
 y2 = step(con_P_CL,time_vec);
+
 plot(time_vec,y2, 'r', 'linewidth', 1)
 
 % Step response of the P-I-based closed loop.
